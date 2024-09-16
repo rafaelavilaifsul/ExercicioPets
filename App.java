@@ -5,11 +5,14 @@ public class App {
         // criar o teclado
         Scanner teclado = new Scanner(System.in);
 
+        Pet[] pets = new Pet[100]; // estimativa de tamanho suficiente...
+        int contPets = 0;
         while (true) {
             // mostrar o menu
-            System.out.println("Escolha uma opção:");
+            System.out.println("\nEscolha uma opção:");
             System.out.println("1) Cadastrar um pet");
-            System.out.println("2) Encerrar");
+            System.out.println("2) Listar os pets cadastrados");
+            System.out.println("3) Encerrar");
             System.out.print("Qual a sua escolha? ");
     
             // receber e guardar a escolha do usuário
@@ -19,7 +22,7 @@ public class App {
             // se opção = 1
             if (escolha == 1) {
                 // perguntar os dados
-                System.out.print("Digite o nome do pet: ");
+                System.out.print("\nDigite o nome do pet: ");
                 String nome = teclado.nextLine();
                 System.out.print("Digite o tipo do pet: ");
                 String tipo = teclado.nextLine();
@@ -34,10 +37,16 @@ public class App {
                 // criar um objeto Pet
                 Pet p = new Pet(nome, tipo, idade, dono, telefone);
     
-                // mostrar os dados na tela
-                System.out.println(p);
-            } else {
+                // adicionar o novo Pet à lista
+                pets[contPets++] = p;
+            } else if (escolha == 2) {
                 // se opção = 2
+                System.out.println("\nPets cadastrados:"); 
+                for (int i = 0; i < contPets; i++) {
+                    System.out.println(pets[i]);
+                }
+            } else {
+                // se opção = 3
                 System.out.println("Ok, tenha um bom dia!"); 
                 // deseja boa noite ao usuário
                 
